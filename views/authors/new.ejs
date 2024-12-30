@@ -1,0 +1,7 @@
+<h2>New author</h2>
+<%-include("../partials/errorMessage") %>
+<form method="POST" action="/authors">
+    <%-include("../partials/form.ejs") %>
+    <a href="/">Cancel</a>
+    <button type="submit">Create author</button>
+</form>
