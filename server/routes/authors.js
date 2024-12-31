@@ -3,9 +3,7 @@ const router = express.Router();
 const controllers = require("../controllers/controllers") 
 const validateAuthor = require("../middlewares/validateAuthor")
 
-router.get("/", (req, res) => {
-    res.render("authors/index");
-});
+router.get("/", controllers.find);
 
 router.get("/new", (req, res) => { 
     res.render("authors/new");

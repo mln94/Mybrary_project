@@ -1,6 +1,19 @@
 const Author = require("../model/model");
 const { validationResult } = require("express-validator");
 
+exports.find = async (req, res) => {
+    let searchOptions = {};
+    if(req.query.name!= null && req.query.name !== ''){
+        searchOptions.name = new RegExp(req.query.name, 'i')
+    }
+    try {
+        const authors = await Author.find(searchOptions)
+        res.render("authors/index", {authors: authors})
+    } catch(error) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
 exports.create = async (req, res) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
